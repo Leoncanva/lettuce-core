@@ -106,12 +106,12 @@ public class XTrimArgs implements CompositeArgument {
     /**
      * The maximum number of entries to trim.
      *
-     * @param limit has meaning only if {@link #approximateTrimming `~`} was set.
+     * @param limit has meaning only if {@link #approximateTrimming `~`} was set. Value of 0 disables the limiting mechanism.
      * @return {@code this}
      */
     public XTrimArgs limit(long limit) {
 
-        LettuceAssert.isTrue(limit > 0, "Limit must be greater 0");
+        LettuceAssert.isTrue(limit >= 0, "Limit must be greater or equal to 0");
 
         this.limit = limit;
         return this;
